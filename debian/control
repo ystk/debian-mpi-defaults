@@ -1,0 +1,34 @@
+Source: mpi-defaults
+Section: devel
+Priority: extra
+Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.org>
+Uploaders: "Adam C. Powell, IV" <hazelsct@debian.org>, Manuel Prinz <manuel@debian.org>
+Standards-Version: 3.8.2
+Build-Depends: debhelper (>= 5.0),
+ libopenmpi-dev (>= 1.2.4-5) [i386 amd64 lpia ia64 powerpc kfreebsd-i386 kfreebsd-amd64],
+ openmpi-bin [i386 amd64 lpia ia64 powerpc kfreebsd-i386 kfreebsd-amd64],
+ lam4-dev [!i386 !amd64 !lpia !ia64 !powerpc !kfreebsd-i386 !kfreebsd-amd64],
+ lam-runtime [!i386 !amd64 !lpia !ia64 !powerpc !kfreebsd-i386 !kfreebsd-amd64]
+Vcs-Browser: http://git.debian.org/?p=debian-science/packages/mpi-defaults.git;a=summary
+Vcs-Git: git://git.debian.org/git/debian-science/packages/mpi-defaults.git
+
+Package: mpi-default-dev
+Architecture: any
+Section: libdevel
+Depends: ${mpi-dev}
+Description: Standard MPI development files
+ This package depends on the development files of the recommended MPI
+ implementation for each platform, currently OpenMPI on all of the platforms
+ where it exists, and LAM on the others.  The package which this depends on has
+ alternatives links for the shared libraries libmpi and libmpi++, and for
+ compilers mpicc, mpic++/mpicxx/mpiCC, mpif77 and mpi90 and their manpages.
+
+Package: mpi-default-bin
+Architecture: any
+Section: net
+Depends: ${mpi}
+Description: Standard MPI runtime programs
+ This package depends on the runtime programs of the recommended MPI
+ implementation for each platform, currently OpenMPI on all of the platforms
+ where it exists, and LAM on the others.  The package which this depends on has
+ alternatives links for mpirun and mpiexec.

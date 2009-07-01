@@ -1,0 +1,47 @@
+#!/usr/bin/make -f
+
+MPI=$(shell readlink /etc/alternatives/mpi | sed s/usr//g | sed s/include//g | sed s/lib//g | sed s/\\///g)
+
+clean:
+	dh_testdir
+	rm -f debian/*.substvars
+	rm -f debian/debian_defaults
+	dh_clean
+
+build:
+
+binary-indep:
+
+binary-arch:
+	dh_testdir -a
+	dh_testroot -a
+	rm -f debian/*.substvars
+	if [ "$(MPI)" = "openmpi" ]; then \
+	  echo "mpi=openmpi-bin" > debian/mpi-default-bin.substvars; \
+	  echo "mpi-dev=libopenmpi-dev" > debian/mpi-default-dev.substvars; \
+	elif [ "$(MPI)" = "lam" ]; then \
+	  echo "mpi=lam-runtime" > debian/mpi-default-bin.substvars; \
+	  echo "mpi-dev=lam4-dev" > debian/mpi-default-dev.substvars; \
+	elif [ "$(MPI)" = "mpich" -o "$(MPI)" = "mpich-mpd" -o "$(MPI)" = "mpich-shmem" ]; then \
+	  echo "mpi=$(MPI)-bin (>= 1.2.7)" > debian/mpi-default-bin.substvars; \
+	  echo "mpi-dev=lib$(MPI)1.0-dev (>= 1.2.7)" > debian/mpi-default-dev.substvars; \
+	else \
+	  echo "Unknown MPI implementation, stopping"; \
+	  exit 1; \
+	fi
+	echo "# Default MPI implementation on this arch" >debian/debian_defaults
+	echo "ARCH_DEFAULT_MPI_IMPL=$(MPI)" >>debian/debian_defaults
+	dh_installdirs -a
+	dh_installdocs -a
+	dh_installchangelogs -a
+	dh_install -pmpi-default-dev debian/debian_defaults usr/share/mpi-default-dev/
+	dh_compress -a
+	dh_fixperms -a
+	dh_installdeb -a
+	dh_gencontrol -a
+	dh_md5sums -a
+	dh_builddeb -a
+
+binary: binary-arch
+
+.PHONY: binary binary-arch binary-indep build clean

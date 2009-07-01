@@ -1,0 +1,51 @@
+mpi-defaults (0.6) unstable; urgency=low
+
+  * Set Standards-Version to 3.8.2. No changes needed.
+  * Added lpia to list of supported architectures, defaulting to
+    Open MPI. Thanks to Steven Susbauer! (Closes: #532643)
+
+ -- Manuel Prinz <manuel@debian.org>  Wed, 01 Jul 2009 12:55:41 +0200
+
+mpi-defaults (0.5) unstable; urgency=low
+
+  * Fix folding in Build-Depends, backslashes are no longer allowed by
+    dpkg-dev (>= 1.15.3), fixing FTBFS with newer versions. Thanks to
+    Cyril Brulebois for the patch! (Closes: #535230)
+
+ -- Manuel Prinz <manuel@debian.org>  Wed, 01 Jul 2009 11:14:52 +0200
+
+mpi-defaults (0.4) unstable; urgency=low
+
+  * debian/control: Fixed broken dependency line. (Closes: #520141)
+  * Made LAM default on Sparc.
+
+ -- Manuel Prinz <manuel@debian.org>  Mon, 23 Mar 2009 22:37:14 +0100
+
+mpi-defaults (0.3) unstable; urgency=low
+
+  [ Manuel Prinz ]
+  * Added myself to Uploaders.
+  * Changed section of mpi-default-bin to "net" (Closes: #509782)
+  * Mode LAM default on alpha, since Open MPI still has build issues.
+  * Made Open MPI default on GNU/kFreeBSD. Thanks to Petr Salinger for
+    the patch! (Closes: #513219)
+  * Provide /usr/share/mpi-defaults-dev/debian_defaults with architecture-
+    dependent information about the default MPI implementation, so build
+    scripts can use it. Thanks to Daniel Leidert for the suggestion!
+    (Closes: #518653)
+
+ -- Manuel Prinz <manuel@debian.org>  Sat, 14 Mar 2009 15:15:10 +0100
+
+mpi-defaults (0.2) unstable; urgency=low
+
+  * Changed debhelper build-dep version to harmonize with compat.
+  * Added binary-indep target (D'oh!).
+
+ -- Adam C. Powell, IV <hazelsct@debian.org>  Fri, 05 Dec 2008 23:09:25 +0900
+
+mpi-defaults (0.1) unstable; urgency=low
+
+  * First cut package for setting default MPI dependencies.
+
+ -- Adam C. Powell, IV <hazelsct@debian.org>  Thu, 20 Nov 2008 09:34:00 -0500
+
