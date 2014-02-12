@@ -8,6 +8,9 @@ clean:
 	rm -f debian/debian_defaults
 	dh_clean
 
+build-arch: build
+build-indep: build
+
 build:
 
 binary-indep:
@@ -19,12 +22,9 @@ binary-arch:
 	if [ "$(MPI)" = "openmpi" ]; then \
 	  echo "mpi=openmpi-bin" > debian/mpi-default-bin.substvars; \
 	  echo "mpi-dev=libopenmpi-dev" > debian/mpi-default-dev.substvars; \
-	elif [ "$(MPI)" = "lam" ]; then \
-	  echo "mpi=lam-runtime" > debian/mpi-default-bin.substvars; \
-	  echo "mpi-dev=lam4-dev" > debian/mpi-default-dev.substvars; \
-	elif [ "$(MPI)" = "mpich" -o "$(MPI)" = "mpich-mpd" -o "$(MPI)" = "mpich-shmem" ]; then \
-	  echo "mpi=$(MPI)-bin (>= 1.2.7)" > debian/mpi-default-bin.substvars; \
-	  echo "mpi-dev=lib$(MPI)1.0-dev (>= 1.2.7)" > debian/mpi-default-dev.substvars; \
+	elif [ "$(MPI)" = "mpich2" ]; then \
+	  echo "mpi=mpich2" > debian/mpi-default-bin.substvars; \
+	  echo "mpi-dev=libmpich2-dev" > debian/mpi-default-dev.substvars; \
 	else \
 	  echo "Unknown MPI implementation, stopping"; \
 	  exit 1; \

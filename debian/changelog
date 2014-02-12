@@ -1,3 +1,27 @@
+mpi-defaults (1.0.1) unstable; urgency=low
+
+  * Team upload
+  * Upload in unstable
+  * Switch to dpkg-source 3.0 (quilt) format
+  * Update of the description (clearly state that it is a metapackage)
+  * Update of the target in debian/rules to match the policy
+  * Fix the lintian warning debian-rules-missing-recommended-target
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Sun, 04 Dec 2011 20:43:30 +0100
+
+mpi-defaults (1.0) experimental; urgency=low
+
+  * Use MPICH2 instead of LAM on architectures not supported by
+    Open MPI. Closes: #555653.
+  * Updated list of architectures where Open MPI is supported.
+    Closes: #553701, #627239.
+  * Dropped MPICH from the list of known MPI implementations.
+  * Updated Standards-Version to 3.9.2. No changes needed.
+  * Added ${misc:Depends} to Depends fields to fix lintian warning.
+  * Removed versioned Build-Dependency of debhelper.
+
+ -- Manuel Prinz <manuel@debian.org>  Thu, 19 May 2011 22:59:37 +0200
+
 mpi-defaults (0.6) unstable; urgency=low
 
   * Set Standards-Version to 3.8.2. No changes needed.
