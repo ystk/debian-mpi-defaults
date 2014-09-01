@@ -1,3 +1,32 @@
+mpi-defaults (1.0.2+nmu2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Switch to openmpi on arm64, powerpcspe, ppc64 and ppc64el.
+    Closes: #748510, #731646.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 07 Aug 2014 10:26:43 +0200
+
+mpi-defaults (1.0.2+nmu1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Switch to openmpi on mips/mipsel 
+    Same patch by Aurelien Jarno and Jurica Stanojkovic
+    Closes: #733275, #738571
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Thu, 20 Feb 2014 08:59:23 +0000
+
+mpi-defaults (1.0.2) unstable; urgency=low
+
+  * Team upload
+  * Fix the logic of debian/rules: it was broken by the renaming of mpich2
+    to mpich in the alternatives system
+  * Update all dependencies to the new libmpich-dev and mpich packages (instead
+    of the transitional packages libmpich2-dev and mpich2)
+  * Replace MPICH2 by MPICH in package descriptions
+  * Use canonical URLs in Vcs-* fields
+
+ -- Sébastien Villemot <sebastien@debian.org>  Sat, 26 Oct 2013 13:35:29 +0000
+
 mpi-defaults (1.0.1) unstable; urgency=low
 
   * Team upload

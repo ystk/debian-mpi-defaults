@@ -5,12 +5,12 @@ Maintainer: Debian Science Team <debian-science-maintainers@lists.alioth.debian.
 Uploaders: "Adam C. Powell, IV" <hazelsct@debian.org>, Manuel Prinz <manuel@debian.org>
 Standards-Version: 3.9.2
 Build-Depends: debhelper,
- libopenmpi-dev (>= 1.4.3-2.1) [alpha armel armhf i386 amd64 lpia ia64 powerpc sparc kfreebsd-i386 kfreebsd-amd64 hurd-i386],
- openmpi-bin (>= 1.4.3-2.1) [alpha armel armhf i386 amd64 lpia ia64 powerpc sparc kfreebsd-i386 kfreebsd-amd64 hurd-i386],
- libmpich2-dev [!alpha !armel !armhf !i386 !amd64 !lpia !ia64 !powerpc !sparc !kfreebsd-i386 !kfreebsd-amd64 !hurd-i386],
- mpich2 [!alpha !armel !armhf !i386 !amd64 !lpia !ia64 !powerpc !sparc !kfreebsd-i386 !kfreebsd-amd64 !hurd-i386]
-Vcs-Browser: http://git.debian.org/?p=debian-science/packages/mpi-defaults.git;a=summary
-Vcs-Git: git://git.debian.org/git/debian-science/packages/mpi-defaults.git
+ libopenmpi-dev (>= 1.4.3-2.1) [!hppa !m68k !s390 !s390x !sh4 !x32],
+ openmpi-bin (>= 1.4.3-2.1) [!hppa !m68k !s390 !s390x !sh4 !x32],
+ libmpich-dev [hppa m68k s390 s390x sh4 x32],
+ mpich [hppa m68k s390 s390x sh4 x32]
+Vcs-Browser: http://anonscm.debian.org/git/?p=debian-science/packages/mpi-defaults.git
+Vcs-Git: git://anonscm.debian.org/debian-science/packages/mpi-defaults.git
 
 Package: mpi-default-dev
 Architecture: any
@@ -19,7 +19,7 @@ Depends: ${mpi-dev}, ${misc:Depends}
 Description: Standard MPI development files (metapackage)
  This metapackage depends on the development files of the recommended MPI
  implementation for each platform, currently Open MPI on all of the platforms
- where it exists, and MPICH2 on the others. The package which this depends on
+ where it exists, and MPICH on the others. The package which this depends on
  has alternatives links for the shared libraries libmpi and libmpi++, and for
  compilers mpicc, mpic++/mpicxx/mpiCC, mpif77 and mpi90 and their manpages.
 
@@ -30,5 +30,5 @@ Depends: ${mpi}, ${misc:Depends}
 Description: Standard MPI runtime programs (metapackage)
  This metapackage depends on the runtime programs of the recommended MPI
  implementation for each platform, currently Open MPI on all of the platforms
- where it exists, and MPICH2 on the others. The package which this depends on
+ where it exists, and MPICH on the others. The package which this depends on
  has alternatives links for mpirun and mpiexec.
